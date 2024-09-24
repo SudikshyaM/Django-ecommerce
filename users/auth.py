@@ -1,0 +1,20 @@
+from django.shortcuts import redirect
+
+# to check if the user is logged in or not.
+def unauthenticated_user(view_function):
+    def wrapper_function(request,*args,**kwargs):
+        if request.user.is_authenticated:
+            return redirect('/users')
+        else:
+            return view_function(request,*args,**kwargs)
+    return wrapper_function
+
+# to redirect admin only to the admin dashboard
+def admin_only(view_function):
+    def wrapper_function(request,*args,**kwargs):
+        if not request.user.is_staff:
+            return redirect('/users')
+        else:
+            return view_function(request,*args,**kwargs)
+    return wrapper_function
+

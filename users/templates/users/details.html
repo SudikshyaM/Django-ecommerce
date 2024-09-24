@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}My Cart{% endblock  %}
+
+
+{% include "users/header.html" %}
+{% block content %}
+<h1>Order Details</h1>
+<p>Order ID: {{ order.id }}</p>
+<p>Placed by: {{ user.username }}</p>
+
+
+            
+{% endblock  %}
+
+
+{% include "users/footer.html" %}

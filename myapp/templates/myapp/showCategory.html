@@ -1,0 +1,46 @@
+{% extends "admins/layouts.html" %}
+{% load static %}
+{% block title %}Categories{% endblock  %}
+
+{% block content %}
+<h1 class="text-center">Categories</h1>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <table class="table table-border">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in category %}
+                    <tr>
+                        <td>{{item.name}}</td>
+                        <td>
+                            <a href="{% url 'updatecat' item.id %}" class="btn btn-primary">Update</a>
+                            <br>
+                            <br>
+                            <a href="{% url 'deletecat' item.id %}" class="btn btn-danger" onClick="return confirm('sachi delete garne ho?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock  %}

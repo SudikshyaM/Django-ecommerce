@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Register{% endblock  %}
+
+{% block content %}
+<h1 class="text-center">Register Form</h1>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5 shadow">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="my-3">
+                    <input type="submit" value="Register" name="register" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock  %}

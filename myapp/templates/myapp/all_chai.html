@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}My Chai{% endblock  %}
+
+{% block content %}
+<h1 class="text-center">Products</h1>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <table class="table table-border">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in chais %}
+                    <tr>
+                        <td><img src="{{item.image.url}}" height="100px"></td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.date}}</td>
+                        <td>{{item.types}}</td>
+
+                   <td> <a href="{% url 'desc' item.id %}">
+                        <button>
+                            {{item.types}} - {{item.id}}
+                        </button>
+                    </a>
+                </td>
+                    </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

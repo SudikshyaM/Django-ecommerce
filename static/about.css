@@ -1,0 +1,9 @@
+body{
+    background-color: #313131;
+    color: aliceblue;
+}
+img{
+    height: 200px;
+    position: relative;
+    left: 100px;
+}

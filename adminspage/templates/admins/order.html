@@ -1,0 +1,56 @@
+{% extends "admins/layouts.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}My Order{% endblock  %}
+
+
+{% include "users/header.html" %}
+{% block content %}
+<h1 class="text-center">Users Orders</h1>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            {% if items|length < 1 %}
+            <h2 class="text-center text-danger my-3">
+                You have no any orders
+            </h2>
+            {% else %}
+            <table class="table table-border">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>unit price</th>
+                        <th>Product Image</th>
+                        <th>Payment Status</th>
+                        <th>Delivery status</th>
+                        <th>Payment method</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in items %}
+                    <tr>
+                        <td>{{i.product.product_name}}</td>
+                        <td>{{i.product.product_price}}</td>
+                        <td><img src="{{i.product.product_image.url}}" alt="" height="100px"></td>
+                        <td>
+                            {{i.payment_status}}
+                        </td>
+                        <td>{{i.delivery_status}}</td>
+                        <td>{{i.payment_method}}</td>
+                        <td>
+                            <a href="/users/details/{{i.id}}" class="btn btn-success">View details</a>
+                        </td>
+                    </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+            {% endif %}
+        
+        </div>
+    </div>
+</div>
+{% endblock  %}
+
+
+{% include "users/footer.html" %}

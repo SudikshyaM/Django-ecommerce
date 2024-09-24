@@ -1,0 +1,16 @@
+.carousel-item img{
+    height: 600px;
+    object-fit: cover;
+}
+.card{
+    width: 400px;
+    background-color: red;
+}
+.card img{
+    width: 400px;
+}
+
+.duh{
+    position: relative;
+    left: 200px;
+}

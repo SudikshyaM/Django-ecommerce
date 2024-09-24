@@ -1,0 +1,39 @@
+{% extends "admins/layouts.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}My users{% endblock  %}
+
+
+{% include "users/header.html" %}
+{% block content %}
+<h1 class="text-center">Users</h1>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            
+            <table class="table table-border">
+                <thead>
+                    <tr>
+                        <th>User Id</th>
+                        <th>User Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in users %}
+                    <tr>
+                        <th>{{i.id}}</th>
+                        <td>{{i.username}}</td>
+                        
+                    </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+            
+        
+        </div>
+    </div>
+</div>
+{% endblock  %}
+
+
+{% include "users/footer.html" %}
